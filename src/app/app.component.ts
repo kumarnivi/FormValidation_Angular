@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup,Validators } from '@angular/forms'
+import { FormControl, FormGroup,Validators, AbstractControl } from '@angular/forms'
 import { min } from 'rxjs';
 
 @Component({
@@ -23,4 +23,12 @@ export class AppComponent {
     conformPassword : new FormControl("", [Validators.required, Validators.maxLength(32), Validators.minLength(8)]),
 
   })
+
+  registerfn() {
+    console.log(this.registerForm.value)
+  }
+  //? Showing Error
+  getControl(name: any) : AbstractControl | null {
+     return this.registerForm.get(name)
+  }
 }
